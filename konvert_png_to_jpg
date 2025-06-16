@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Directory containing the PNG files
+input_dir="/home/pc/Dokumenti/GitHub/Bible-Maps"
+
+# Loop through all PNG files in the directory
+for file in "$input_dir"/*.png; do
+    # Get the base name of the file (without extension)
+    base_name=$(basename "$file" .png)
+
+
+    # Convert the PNG file to a low-resolution thumb JPG file
+    convert "$file" -resize 220x220 -quality 60 "$input_dir/${base_name}_thumb.jpg"
+
+    
+    # Convert the PNG file to a low-resolution JPG file
+    # convert "$file" -resize 800x600 -quality 85 "$input_dir/$base_name.jpg"
+    convert "$file" -resize 1200x1200 -quality 85 "$input_dir/${base_name}.jpg"
+done
+
